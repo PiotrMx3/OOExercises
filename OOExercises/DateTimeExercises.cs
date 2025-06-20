@@ -17,7 +17,7 @@ namespace OOExercises
             Console.WriteLine("3. H10-DayOfTheWeek");
             Console.WriteLine("4. H10-TicksSince2000");
             Console.WriteLine("5. H10-LeapYearCount");
-            Console.WriteLine("5. H10-Codetiming");
+            Console.WriteLine("6. H10-CodeTiming");
 
 
             Console.Write("Maak een keuze: ");
@@ -168,6 +168,11 @@ namespace OOExercises
 
             Console.WriteLine($"Het duurt {diffrence.TotalMilliseconds} milliseconden om een array van een miljoen elementen aan te maken en op te vullen met opeenvolgende waarden.");
         }
+
+
+
+
+
 
     }
 }

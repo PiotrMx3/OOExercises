@@ -22,6 +22,9 @@
             //        case "1":
             //            DateTimeExercises.ShowSubmenu();
             //            break;
+            //        case "2":
+            //            CombinationOf2Numbers.ClassesAndObjects();
+            //            break;
             //        default:
             //                Console.WriteLine("Ongeldig keuze ! ");
             //            break;
@@ -32,8 +35,7 @@
             //}
 
 
-            DateTimeExercises.H10CodeTiming();
-
+            CombinationOf2Numbers.DemoCombinationOf2Numbers();
 
         }
     }
