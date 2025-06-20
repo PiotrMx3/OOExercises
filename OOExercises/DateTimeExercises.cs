@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,10 @@ namespace OOExercises
 
         public static void ShowSubmenu()
         {
-            Console.WriteLine("H10-Clock");
-            Console.WriteLine("H10-Birthday");
-            Console.WriteLine("H10-DayOfTheWeek");
+            Console.WriteLine("1. H10-Clock");
+            Console.WriteLine("2. H10-Birthday");
+            Console.WriteLine("3. H10-DayOfTheWeek");
+            Console.WriteLine("3. H10-TicksSince2000");
 
             Console.Write("Maak een keuze: ");
             string choice = Console.ReadLine();
@@ -27,12 +29,17 @@ namespace OOExercises
                 case "2":
                     H10Clock();
                     break;
+                case "3":
+                    H10DayOfTheWeek();
+                    break;
+                case "4":
+                    H10TicksSince2000();
+                    break;
                 default:
                     Console.WriteLine("Ongeldig keuze ! ");
                     break;
             }
         }
-
 
 
 
@@ -69,6 +76,69 @@ namespace OOExercises
 
 
             Console.WriteLine($"Aantal dagen tot verjaardag: {daysNextBirthday.TotalDays}");
+
+        }
+
+
+        public static void H10DayOfTheWeek()
+        {
+            Console.WriteLine("Wellke dag ?");
+            int day = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Wellke maand ?");
+            int month = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Wellke jaar ?");
+            int year = Convert.ToInt32(Console.ReadLine());
+
+            DateTime userDate = new DateTime(year, month, day);
+            CultureInfo belgiumCI = new CultureInfo("nl-BE");
+
+
+            Console.WriteLine($"{userDate.ToString("dd MMMM yyyy ", belgiumCI)} is een {userDate.ToString("dddd", belgiumCI)}.");
+
+
+        }
+
+
+        public static void H10TicksSince2000()
+        {
+
+            DateTime startDate = new DateTime(2000, 1, 1);
+
+            while (true)
+            {
+                long amount = DateTime.Now.Ticks - startDate.Ticks;
+
+                Console.WriteLine($"Sinds 1 januari 2000 zijn er {amount} ticks voorbijgegaan.");
+                System.Threading.Thread.Sleep(1000);
+                Console.Clear();
+
+            }
+        }
+
+
+        public static void H10LeapYearCount()
+        {
+            DateTime startYear = new DateTime(1799,1,1);
+            DateTime endYear = new DateTime(2021,1,1);
+
+
+            int counter = 0;
+            while (startYear.Year <= endYear.Year)
+            {
+                bool leapYear = DateTime.IsLeapYear(startYear.Year);
+
+                if (leapYear)
+                {
+                    counter++;
+                } 
+
+                startYear = startYear.AddYears(1);
+            }
+
+                Console.WriteLine($"Er zijn {counter} schrikkeljaren tussen 1799 en 2021.");
+        
 
         }
 

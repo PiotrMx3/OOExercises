@@ -32,7 +32,7 @@
             //}
 
 
-            DateTimeExercises.H10Birthday();
+            DateTimeExercises.H10LeapYearCount();
 
 
         }
