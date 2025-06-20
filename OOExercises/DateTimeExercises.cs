@@ -15,7 +15,10 @@ namespace OOExercises
             Console.WriteLine("1. H10-Clock");
             Console.WriteLine("2. H10-Birthday");
             Console.WriteLine("3. H10-DayOfTheWeek");
-            Console.WriteLine("3. H10-TicksSince2000");
+            Console.WriteLine("4. H10-TicksSince2000");
+            Console.WriteLine("5. H10-LeapYearCount");
+            Console.WriteLine("5. H10-Codetiming");
+
 
             Console.Write("Maak een keuze: ");
             string choice = Console.ReadLine();
@@ -34,6 +37,12 @@ namespace OOExercises
                     break;
                 case "4":
                     H10TicksSince2000();
+                    break;
+                case "5":
+                    H10LeapYearCount();
+                    break;
+                case "6":
+                    H10CodeTiming();
                     break;
                 default:
                     Console.WriteLine("Ongeldig keuze ! ");
@@ -138,8 +147,26 @@ namespace OOExercises
             }
 
                 Console.WriteLine($"Er zijn {counter} schrikkeljaren tussen 1799 en 2021.");
-        
 
+        }
+
+
+        public static void H10CodeTiming()
+        {
+            int[] array = new int[1000000 * 1000];
+
+            DateTime miliOne = DateTime.Now;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = i;
+            }
+
+            DateTime miliTwo = DateTime.Now;
+
+            TimeSpan diffrence = miliTwo - miliOne;
+
+            Console.WriteLine($"Het duurt {diffrence.TotalMilliseconds} milliseconden om een array van een miljoen elementen aan te maken en op te vullen met opeenvolgende waarden.");
         }
 
     }

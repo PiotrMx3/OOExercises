@@ -32,7 +32,7 @@
             //}
 
 
-            DateTimeExercises.H10LeapYearCount();
+            DateTimeExercises.H10CodeTiming();
 
 
         }
