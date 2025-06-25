@@ -12,7 +12,7 @@ namespace OOExercises
         {
             Console.WriteLine("1. DemoCombinationOf2Numbers");
             Console.WriteLine("2. DemoFigures");
-            Console.WriteLine("3. ");
+            Console.WriteLine("3. DemoFiguresWithConstructor");
 
 
             Console.Write("Maak een keuze: ");
@@ -27,6 +27,9 @@ namespace OOExercises
                 case "2":
                     DemoFigures();
                     break;
+                case "3":
+                    DemoFiguresWithConstructor();
+                    break;
                 default:
                     Console.WriteLine("Ongeldig keuze ! ");
                     break;
@@ -34,7 +37,6 @@ namespace OOExercises
         }
 
 
-          
         public int Number1;
         public int Number2;
 
@@ -91,18 +93,19 @@ namespace OOExercises
             r1.Width = -1;
             r1.Height = 0;
 
+            r1.MeesageOut();
 
             Rectangle r2 = new Rectangle();
             r2.Width = 2.2;
             r2.Height = 1.5;
 
-            Console.WriteLine($"Een rechthoek met een breedte van {r2.Width}m en een hoogte van {r2.Height}m heeft een oppervlakte van {r2.Area:F1}m².");
+            r2.MeesageOut();
 
             Rectangle r3 = new Rectangle();
             r3.Width = 3;
             r3.Height = 1;
 
-            Console.WriteLine($"Een rechthoek met een breedte van {r3.Width}m en een hoogte van {r3.Height}m heeft een oppervlakte van {r3.Area:F1}m².");
+            r3.MeesageOut();
 
 
 
@@ -111,17 +114,39 @@ namespace OOExercises
             t1.Base = 3;
             t1.Height = 1;
 
-            Console.WriteLine($"Een driehoek met een basis van {t1.Base}m en een hoogte van {t1.Height}m heeft een oppervlakte van {t1.Area:F1}m².");
+            t1.MeesageOut();
 
             Triangle t2 = new Triangle();
             t2.Base = 2;
             t2.Height = 2;
 
-            Console.WriteLine($"Een driehoek met een basis van {t2.Base}m en een hoogte van {t2.Height}m heeft een oppervlakte van {t2.Area:F1}m².");
+            t2.MeesageOut();
 
 
 
         }
+
+
+        public static void DemoFiguresWithConstructor()
+        {
+            Rectangle r1 = new Rectangle(-1, 0);
+            r1.MeesageOut();
+
+            Rectangle r2 = new Rectangle(2.2, 1.5);
+            r1.MeesageOut();
+
+            Rectangle r3 = new Rectangle(3, 1.0);
+            r3.MeesageOut();
+
+            Triangle t1 = new Triangle(3, 1);
+            t1.MeesageOut();
+
+            Triangle t2 = new Triangle(2, 2);
+            t2.MeesageOut();
+
+
+        }
+
 
     }
 }

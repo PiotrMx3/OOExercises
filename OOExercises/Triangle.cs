@@ -15,10 +15,19 @@ namespace OOExercises
 
         public Triangle()
         {
-            this.@base = 1.0;
-            this.height = 1.0;
+            this.@Base = 1.0;
+            this.Height = 1.0;
 
         }
+
+
+        public Triangle(double @base, double height)
+        {
+            this.@Base = @base;
+            this.Height = height;
+
+        }
+
 
         public double @Base
         {
@@ -29,15 +38,10 @@ namespace OOExercises
 
             set
             {
-                if (value <= 0)
-                {
-                    Console.WriteLine($"Het is verboden een base van {value} in te stellen!");
-                }
-                else
+                if (value > 0)
                 {
                     this.@base = value;
                 }
-
                 
             }
         }
@@ -52,14 +56,11 @@ namespace OOExercises
 
             set
             {
-                if(value <= 0 )
-                {
-                    Console.WriteLine($"Het is verboden een hogte van {value} in te stellen!");
-                }
-                else
+                if (value > 0)
                 {
                     this.height = value;
                 }
+
 
             }
         }
@@ -71,6 +72,20 @@ namespace OOExercises
             get
             {
                 return this.@base * this.height / 2;
+            }
+        }
+
+
+        public void MeesageOut()
+        {
+            if (Height < 1.0 || @Base < 1.0)
+            {
+                Console.WriteLine($"Het is verboden een basis of hogte van 0 of kleiner in te stellen!");
+            }
+            else
+            {
+
+                Console.WriteLine($"Een driehoek met een basis van {this.@Base}m en een hoogte van {this.Height}m heeft een oppervlakte van {Area:F1}m².");
             }
         }
 

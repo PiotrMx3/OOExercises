@@ -20,6 +20,12 @@ namespace OOExercises
         }
 
 
+        public Rectangle(double width, double height)
+        {
+            this.Width = width;
+            this.Height = height;
+        }
+
 
         public double Width
         {
@@ -30,15 +36,11 @@ namespace OOExercises
 
             set
             {
-                if (value <= 0)
+                if (value > 0)
                 {
-                    Console.WriteLine($"Het is verboden een breedte van {value} in te stellen!");
+                    this.width = value;
                 }
-                else
-                {
 
-                   this.width = value;
-                }
                 
             }
         }
@@ -53,15 +55,11 @@ namespace OOExercises
 
             set
             {
-                if (value <= 0)
+                if (value > 0)
                 {
-                    Console.WriteLine($"Het is verboden een hogte van {value} in te stellen!");
-                }
-                else
-                {
-
                     this.height = value;
                 }
+
                 
             }
         }
@@ -73,5 +71,17 @@ namespace OOExercises
             }
         }
 
+        public void MeesageOut()
+        {
+            if (Height < 1 || Width < 1)
+            {
+                Console.WriteLine($"Het is verboden een breedte of hogte van 0 of kleiner in te stellen!");
+            }
+            else
+            {
+
+                Console.WriteLine($"Een rechthoek met een breedte van {this.Width}m en een hoogte van {this.Height}m heeft een oppervlakte van {Area:F1}m².");
+            }
+        }
     }
 }
