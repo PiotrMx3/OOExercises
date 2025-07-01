@@ -13,6 +13,7 @@ namespace OOExercises
             Console.WriteLine("1. DemoCombinationOf2Numbers");
             Console.WriteLine("2. DemoFigures");
             Console.WriteLine("3. DemoFiguresWithConstructor");
+            Console.WriteLine("4. DemoPurchase");
 
 
             Console.Write("Maak een keuze: ");
@@ -29,6 +30,9 @@ namespace OOExercises
                     break;
                 case "3":
                     DemoFiguresWithConstructor();
+                    break;
+                case "4":
+                    DemoPurchase();
                     break;
                 default:
                     Console.WriteLine("Ongeldig keuze ! ");
@@ -147,6 +151,17 @@ namespace OOExercises
 
         }
 
+        public static void DemoPurchase()
+        {
+
+            FoodPurchase food1 = new FoodPurchase("kaas", 2, 2.45, Convert.ToBoolean(1));
+            food1.PrintInfo();
+
+            FoodPurchase food2 = new FoodPurchase("appel", 0, 5555, Convert.ToBoolean(1));
+            food2.PrintInfo();
+
+
+        }
 
     }
 }
