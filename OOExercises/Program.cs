@@ -9,9 +9,7 @@ namespace OOExercises
 
         static void Main(string[] args)
         {
-
-            Bibliotheek.RentalBib();
-
+            Inheritance.DemoPostOffice();
 
             //while (true)
             //{

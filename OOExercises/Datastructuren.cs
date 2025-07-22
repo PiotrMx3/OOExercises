@@ -16,6 +16,7 @@ namespace OOExercises
             Console.WriteLine("1. H13-PhoneBookNameNumber");
             Console.WriteLine("2. H13-PhoneBookCityNameNumber");
             Console.WriteLine("3. H13-PhoneBookWithBuilder");
+            Console.WriteLine("4. H13-BibApp");
 
             string key = Console.ReadLine();
 
@@ -29,6 +30,9 @@ namespace OOExercises
                     break;
                 case "3":
                     PhoneBookWithBuilder();
+                    break;
+                case "4":
+                    Bibliotheek.RentalBib();
                     break;
                 default:
                     Console.WriteLine("Maake een geldige keuze !");
