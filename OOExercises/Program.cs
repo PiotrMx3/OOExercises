@@ -5,11 +5,11 @@ namespace OOExercises
     internal class Program
     {
 
-
-
         static void Main(string[] args)
         {
-            Inheritance.DemoPostOffice();
+
+            DemoVet();
+
 
             //while (true)
             //{
@@ -50,5 +50,33 @@ namespace OOExercises
 
 
         }
+
+        public static void DemoVet()
+        {
+            var patients = new List<Animal>();
+            var animal1 = new Dog();
+            animal1.IndividualAllergies = new List<string> { "vis" };
+            animal1.Chip = "ABC123";
+            animal1.Gender = Genders.Female;
+            animal1.Name = "Misty";
+            patients.Add(animal1);
+            var animal2 = new Parrot();
+            animal2.Gender = Genders.Male;
+            animal2.Name = "Coco";
+            patients.Add(animal2);
+            foreach (var animal in patients)
+            {
+                Console.WriteLine(animal.Name);
+                Console.WriteLine(animal.Gender);
+                Console.WriteLine("allergieën:");
+                foreach (var allergie in animal.Allergies)
+                {
+                    Console.WriteLine(allergie);
+                }
+                animal.ShowChip();
+            }
+        }
+
+
     }
 }
