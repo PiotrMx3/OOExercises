@@ -51,7 +51,7 @@ namespace OOExercises
 
         public override void ShowChip()
         {
-            Console.WriteLine($"CPapegaaien worden niet gechipt. ");
+            Console.WriteLine($"Papegaaien worden niet gechipt. ");
         }
         public override ImmutableList<string> Allergies
         {

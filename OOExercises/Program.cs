@@ -7,8 +7,10 @@ namespace OOExercises
 
         static void Main(string[] args)
         {
+            DemoPizza();
+            //DemoOrders();
 
-            DemoVet();
+            //DemoVet();
 
 
             //while (true)
@@ -77,6 +79,43 @@ namespace OOExercises
             }
         }
 
+
+        public static void DemoOrders()
+        {
+            Console.WriteLine("Aantal stuks? ");
+            uint amount = Convert.ToUInt16(Console.ReadLine());
+
+            Console.WriteLine("Basisprijs? ");
+            double price = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Gewone bestelling(1) of internationale bestelling(2) ?" );
+            string typeOrder = Console.ReadLine();
+
+            if(typeOrder == "1")
+            {
+                Order normalOrder = new Order(amount, price);
+                Console.WriteLine(normalOrder);
+            }
+            else if(typeOrder == "2")
+            {
+                Order internationalOrder = new InternationalOrder(amount, price);
+                Console.WriteLine(internationalOrder);
+
+            }
+        }
+
+        public static void DemoPizza()
+        {
+
+            Margherita pizza1 = new Margherita();
+            Vegie pizza2 = new Vegie();
+
+            Console.WriteLine($"{pizza1.UnitPrice}");
+            pizza1.ShowIngredients();
+            Console.WriteLine($"{pizza2.UnitPrice}");
+            pizza2.ShowIngredients();
+
+        }
 
     }
 }
