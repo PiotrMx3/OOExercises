@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
 namespace OOExercises
 {
@@ -7,9 +8,26 @@ namespace OOExercises
 
         static void Main(string[] args)
         {
-            DemoPizza();
-            //DemoOrders();
 
+            try
+            {
+                Kat kat = new Kat(27);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+            //ExceptionHandling.DemonstreerKeuzeElementAllExceptions();
+            //ExceptionHandling.DemonstreerKeuzeElement();
+            //ExceptionHandling.Demo();
+            //ExceptionHandling.DemoException();
+            //ExceptionHandling.DemoOverflow();
+            //ExceptionHandling.DemoOverFLowException();
+            //DemoMeals();
+            //DemoPizza();
+            //DemoOrders();
             //DemoVet();
 
 
@@ -115,7 +133,32 @@ namespace OOExercises
             Console.WriteLine($"{pizza2.UnitPrice}");
             pizza2.ShowIngredients();
 
+
         }
 
+
+        public static void DemoMeals()
+        {
+            List<Meal> allMeals = new();
+
+        
+            Meal meal1 = new("palling ik het groen", 22.00);
+            allMeals.Add(meal1);
+
+            ChildrenMeal child1 = new("kinder geracht", 11.00);
+            allMeals.Add(child1);
+
+            Meal meal2 = new("waterzooi", 22.00);
+            allMeals.Add(meal2);
+
+            ChildrenMeal child2 = new("kabouter geracht", 12.00);
+            allMeals.Add(child2);
+
+            foreach (var item in allMeals)
+            {
+                item.ShowTheMenu();
+            }
+
+        }
     }
 }
