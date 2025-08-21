@@ -9,14 +9,33 @@ namespace OOExercises
         static void Main(string[] args)
         {
 
-            try
-            {
-                Kat kat = new Kat(27);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+
+            DemonstreerFormulieren();
+
+
+
+
+            //try
+            //{
+            //    KatMetCustomException kat = new KatMetCustomException(37);
+            //}
+            //catch (Exception e)
+            //{
+
+            //    Console.WriteLine(e.Message);
+            //}
+
+            //Console.WriteLine(Filehelper());
+            //Kat.DemonstreerLeeftijdKatMetResourceCleanup();
+
+            //try
+            //{
+            //    Kat kat = new Kat(27);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //}
 
 
             //ExceptionHandling.DemonstreerKeuzeElementAllExceptions();
@@ -69,6 +88,80 @@ namespace OOExercises
             //}
 
 
+        }
+
+        public static void DemonstreerFormulieren()
+        {
+            var vraag1 = new FormulierGetalVraag("Hoe oud ben je?", 18, 130);
+            var vraag2 = new  FormulierVrijeTekstVraag("Hoe ziet jouw ideale dag eruit?");
+            var vraag3 = new FormulierGetalVraag("Hoe veel personen heb je ten laste?", 0, 10);
+            var vraag4 = new FormulierVrijeTekstVraag("Wie is je idool?");
+
+            Formulier f1 = new Formulier(new List<FormulierVraag> { vraag1, vraag2 });
+            Formulier f2 = new Formulier(new List<FormulierVraag> { vraag3, vraag4 });
+
+
+            try
+            {
+                f1.VulIn();
+                f1.Toon();
+            }
+            catch (Exception)
+            {
+                System.Console.WriteLine("We zullen dit formulier weggooien.");
+                f1 = null;
+            }
+            try
+            {
+                f2.VulIn();
+                f2.Toon();
+            }
+            catch (Exception)
+            {
+                System.Console.WriteLine("We zullen dit formulier weggooien.");
+                f2 = null;
+            }
+        }
+
+
+
+
+        public static string Filehelper()
+        {
+            Console.WriteLine("Welke file wil je lezen?");
+            string path = Console.ReadLine();
+            string result = "";
+
+            try
+            {
+
+            string[] fileRead = File.ReadAllLines($@"{path}");
+
+            Console.WriteLine();
+
+                //foreach (var item in fileRead)
+                //{
+                //    result += $"{item}\n";
+                //}
+
+                result = string.Join("\n", fileRead);
+
+
+            }
+            catch (FileNotFoundException)
+            {
+                result = "File kon niet gevonden worden";
+            }
+            catch (UnauthorizedAccessException)
+            {
+                result = "File bestaat, maar kon niet gelezen worden. Mogelijk heb je geen toegangsrechten.";
+            }
+            catch (Exception)
+            {
+                result = "er ging iets miss !";
+            }
+
+            return result;
         }
 
         public static void DemoVet()
