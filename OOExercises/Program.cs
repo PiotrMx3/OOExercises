@@ -9,10 +9,11 @@ namespace OOExercises
         static void Main(string[] args)
         {
 
-
-            DemonstreerFormulieren();
-
-
+            Polymorfisme.DemoAfspraken();
+            //Polymorfisme.DemonstreerIRoosterbaar();
+            //Polymorfisme.DemonstreerGrootkeuken();
+            //Polymorfisme.DemonstreerAandrijving();
+            //DemonstreerFormulieren();
 
 
             //try
