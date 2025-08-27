@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OOExercises
 {
@@ -43,6 +45,10 @@ namespace OOExercises
     {
         TimeSpan  Tijdsduur { get; }
         string Omschrijving { get; }
+
+        void Initialiseer();
+        DateTime RoosterOm(DateTime referentiepunt);
+
     }
 
 
@@ -254,6 +260,35 @@ namespace OOExercises
                 TitelAfspraak = titelAfspraak;
             }
 
+            public Afspraak()
+            {
+
+            }
+
+            public void Initialiseer()
+            {
+                Console.WriteLine("Omschrijving ?");
+                string omschrijving = Console.ReadLine();
+
+                Console.WriteLine("Aantal minuten veplaatsing ?");
+                int verplaatsing = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Aantal minuten afspraak zelf ?");
+                int aspraakTijd = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Aantal minuten om terug te keren ?");
+                int terugKeren = Convert.ToInt32(Console.ReadLine());
+
+                VerplaatsenAfspraak = TimeSpan.FromMinutes(verplaatsing);
+                DuurAfspraak = TimeSpan.FromMinutes(aspraakTijd);
+                TerugKomenAfspraak = TimeSpan.FromMinutes(terugKeren);
+
+            }
+
+            public DateTime RoosterOm(DateTime referentiepunt)
+            {
+                return referentiepunt - VerplaatsenAfspraak;
+            }
         }
 
         internal class Taak : IRoosterbaar
@@ -277,8 +312,26 @@ namespace OOExercises
                 TitelTaak = titelTaak;
             }
 
+            public Taak()
+            {
 
+            }
 
+            public void Initialiseer()
+            {
+                Console.WriteLine("Omschrijving ?");
+                string omschrijving = Console.ReadLine();
+
+                Console.WriteLine("Aantal minuten werk ?");
+                int werkTijd = Convert.ToInt32(Console.ReadLine());
+
+                WerktijdTaak = TimeSpan.FromMinutes(werkTijd);
+            }
+
+            public DateTime RoosterOm(DateTime referentiepunt)
+            {
+                return referentiepunt;
+            }
         }
 
         public static void DemonstreerIRoosterbaar()
@@ -326,6 +379,22 @@ namespace OOExercises
 
             }
 
+            private void TaakMaken()
+            {
+                Console.WriteLine("Omschrijving ?");
+                string omschrijving = Console.ReadLine();
+
+                Console.WriteLine("Aantal minuten werk ?");
+                int werkTijd = Convert.ToInt32(Console.ReadLine());
+
+                var nieuweTaak = new Taak(new TimeSpan(0, werkTijd, 0), omschrijving);
+
+                Console.WriteLine("Wanneer moet dit geroosterd worden ? (DD/MM/JJJJ UU:MM (PM/AM))");
+                DateTime date = DateTime.Parse(Console.ReadLine());
+
+                this._afspraken.Add(date, nieuweTaak);
+            }
+
             public Kalender(string name)
             {
                 KalenderNaam = name;
@@ -333,14 +402,16 @@ namespace OOExercises
 
             public void VoegToe()
             {
-                Console.WriteLine("Om wat voor object gaat het ?");
-                Console.WriteLine("1. Afspraak");
-                Console.WriteLine("2. Taak");
 
                 string userInput;
 
                 while (true)
                 {
+                    Console.WriteLine("Om wat voor object gaat het ?");
+                    Console.WriteLine("1. Afspraak");
+                    Console.WriteLine("2. Taak");
+                    Console.WriteLine();
+
                     userInput = Console.ReadLine();
 
                     switch (userInput)
@@ -349,7 +420,7 @@ namespace OOExercises
                             AfspraakMaken();
                             break;
                         case "2":
-                            // TODO : Taak metode
+                            TaakMaken();
                             break;
                         default:
                             Console.WriteLine("Verkeerde keuze !");
@@ -363,12 +434,34 @@ namespace OOExercises
                     if (userInput.Trim().ToLower() == "nee") break;
                 }
 
+
             }
 
-
-
+        public void VoegToeLosgekoppeld()
+        {
+            System.Console.WriteLine("Om wat voor object gaat het?");
+            System.Console.WriteLine("1. Afspraak");
+            System.Console.WriteLine("2. Taak");
+            IRoosterbaar item;
+            DateTime begin;
+            int antwoord = Convert.ToInt32(Console.ReadLine());
+            if (antwoord == 1)
+            {
+                item = new Afspraak();
+            }
+            else
+            {
+                item = new Taak();
+            }
+            item.Initialiseer();
+            System.Console.WriteLine("Wanneer moet dit geroosterd worden?");
+            begin = Convert.ToDateTime(Console.ReadLine(), new CultureInfo("nl-BE"));
+            this._afspraken[item.RoosterOm(begin)] = item;
+        }
 
         }
+
+
 
         public static void DemoAfspraken()
         {
@@ -383,6 +476,8 @@ namespace OOExercises
                 }
 
         }
+
+
     }
 }
 
